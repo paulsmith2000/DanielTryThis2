@@ -231,15 +231,10 @@ void ALed2ColorSpinner::doEffect(uint32_t t) {
 }
 
 
-ALedSinelon::ALedSinelon(CRGB* leds,uint16_t length,uint32_t delta,uint32_t delay,
- CRGB color,uint8_t bpm,uint8_t fade,uint8_t offset) : 
- ALedSegment(leds,length,delta,delay) {
-   m_color = color;
-   m_bpm = bpm;
-   m_fade = fade;
-   m_offset=offset;
-}
-	
+ALedSinelon::ALedSinelon(LedArray leds, Length length, Color color, Bpm bpm, Fade fade, Offset offset) : 
+ ALedSegment(leds.value, length.value, 0, 0), m_color(color.value), m_bpm(bpm.value), 
+ m_fade(fade.value), m_offset(offset.value) {}
+
 void ALedSinelon::doEffect(uint32_t t) {
   fadeToBlackBy(m_leds, m_length, m_fade);
   int8_t pos = beatsin8(m_bpm, 0, m_length - 1, 0, m_offset);

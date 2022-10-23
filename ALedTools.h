@@ -20,6 +20,27 @@ typedef CRGB* CRGBPtr;
 typedef ALedColorWave* AWavePtr;
 typedef ALedFader* ALedFaderPtr;
 
+
+struct LedArray {CRGB* value;};
+struct Length {uint16_t value;};
+struct FadeInTime {float value;};
+struct PlateauTime {float value;};
+struct FadeOutTime {float value;};
+struct DarkTime {float value;};
+struct Offset {uint8_t value;};
+struct MinimumBrightness {uint8_t value;};
+struct SparkleDensity {uint16_t value;};
+struct Color {CRGB value;};
+struct Bpm {uint8_t value;};
+struct Fade {uint8_t value;};
+struct StartHue {uint8_t value;};
+struct EndHue {uint8_t value;};
+struct StartSat {uint8_t value;};
+struct EndSat {uint8_t value;};
+struct ValueMin {float value;};
+struct ValueMax {float value;};
+
+
 const uint8_t cMaxNumSegments=20;
 
 class ALedStrip {
@@ -133,11 +154,12 @@ protected:
    uint8_t m_offset;
 };
 
+
+
 class ALedSinelon : public ALedSegment {
 
 public:
-  	ALedSinelon(CRGBPtr leds,uint16_t length,uint32_t delta,uint32_t delay,CRGB color,
-  	 uint8_t bpm, uint8_t fade,uint8_t offset);       	 
+  ALedSinelon(LedArray leds, Length length, Color color, Bpm bpm, Fade fade, Offset offset);       	 
 	void doEffect(uint32_t t);
 
 protected:
@@ -151,16 +173,6 @@ inline uint8_t scale(uint8_t val, uint8_t numerator) {
    uint16_t step = val*numerator;
    return step/255;
 }
-
-struct LedArray {CRGB* value;};
-struct Length {uint16_t value;};
-struct FadeInTime {float value;};
-struct PlateauTime {float value;};
-struct FadeOutTime {float value;};
-struct DarkTime {float value;};
-struct Offset {uint8_t value;};
-struct MinimumBrightness {uint8_t value;};
-struct SparkleDensity {uint16_t value;};
 
 class ALedFader : public ALedSegment { 
 
@@ -215,12 +227,6 @@ protected:
 
 };
 
-struct StartHue {uint8_t value;};
-struct EndHue {uint8_t value;};
-struct StartSat {uint8_t value;};
-struct EndSat {uint8_t value;};
-struct ValueMin {float value;};
-struct ValueMax {float value;};
 
 class ALedBreather : public ALedSegment {
 

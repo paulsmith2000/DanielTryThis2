@@ -64,9 +64,9 @@ void setup() {
   strip = ALedStrip(leds, NUM_LEDS, DATA_PIN, brightness);
 
   segment[0] = new ALedBreather(LedArray{leds}, Length{45}, StartHue{15}, EndHue{95}, StartSat{230}, EndSat{255}, ValueMin{120.0}, ValueMax{255.0}); 
-  segment[1] = new ALedSinelon(leds + 45, 31, 0,0,colA, 70, 90, 0);
+  segment[1] = new ALedSinelon(LedArray{leds + 45}, Length{31}, Color{colA}, Bpm{70}, Fade{90}, Offset{0});
   segment[1]->turnOff();
-  segment[2] = new ALedSinelon(leds + 45, 31, 0,0,colB, 70, 90, 127);
+  segment[2] = new ALedSinelon(LedArray{leds + 45}, Length{31}, Color{colB}, Bpm{70}, Fade{90}, Offset{127});
   segment[2]->turnOff();
   segment[3] = new ALed2ColorSpinner(leds + 45, 31, 0, 0, 70, 0, colA, colB); 
   segment[4] = new ALedBreather(LedArray{leds + 76}, Length{24});

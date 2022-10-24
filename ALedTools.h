@@ -6,7 +6,7 @@
 #include "FastLED.h"
 
 
-#define LED_TYPE WS2812B      // test git
+#define LED_TYPE WS2812B      // test git on PC
 
 
 class ALedSegment;
